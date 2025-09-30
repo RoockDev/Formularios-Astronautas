@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Astronautas- Mision Marte 2030</title>
+  </head>
+  <body>
+    <h1>Formulario de Postulación - Misión Marte 2030</h1>
+
+    <form id="astronautForm">
+      <!-- nombre completo -->
+      <label for="fullName">Nombre completo:</label>
+      <input type="text" id="fullName" name="fullName" required />
+      <span id="error-fullName" class="error-message"></span>
+
+      <!-- correo de contacto -->
+      <label for="email">Correo de contacto: </label>
+      <input type="email" id="email" name="email" required />
+      <span id="error-email" class="error-message"></span>
+
+      <!-- Codigo de Seguridad -->
+      <label for="password">Codigo de seguridad:</label>
+      <input type="email" id="email" name="email" required />
+      <span id="error-password" class="error-message"></span>
+
+      <!-- Edad -->
+      <label for="age">Edad:</label>
+      <input type="number" id="age" name="age" />
+      <span id="error-age" class="error-message"></span>
+
+      <!-- Especialidad(radio) -->
+      <fieldset>
+        <legend>Especialidad:</legend>
+        <label
+          ><input type="radio" name="specialty" value="Piloto" required />
+          Piloto</label
+        >
+        <label
+          ><input type="radio" name="specialty" value="Ingeniero" required />
+          Ingeniero</label
+        >
+        <label
+          ><input type="radio" name="specialty" value="Médico" required />
+          Médico</label
+        >
+        <label
+          ><input type="radio" name="specialty" value="Científico" required />
+          Científico</label
+        >
+      </fieldset>
+      <span id="error-specialty" class="error-message"></span>
+
+      <!-- Planeta de origen -->
+      <label for="planet">Planeta de origen: </label>
+      <select name="planet" id="planet" required>
+        <option value="">Selecciona un planeta</option>
+        <option value="Tierra">Tierra</option>
+        <option value="Marte">Marte</option>
+        <option value="Jupiter">Jupiter</option>
+      </select>
+      <span id="error-planet" class="error-message"></span>
+
+      <!-- Fecha de disponibilidad -->
+      <label for="departureDate">Fecha de disponibilidad</label>
+      <input type="date" id="departureDate" name="departureDate" required />
+      <span id="error-departureDate" class="error-message"></span>
+
+      <!-- Nivel de condicion fisica -->
+      <label for="fitnessLevel">Nivel de condicion fisica</label>
+      <input
+        type="range"
+        id="fitnessLevel"
+        name="fitnessLevel"
+        min="1"
+        max="10"
+      />
+      <span id="error-fitnessLevel" class="error-message"></span>
+
+      <!-- Expediente medico -->
+      <label for="medicalFile">Expediente medico</label>
+      <input
+        type="file"
+        id="medicalFile"
+        name="medicalFile"
+        accept=".pdf"
+        required
+      />
+      <span id="error-medicalFile" class="error-message"></span>
+
+      <!-- Comentarios adicionales -->
+      <label for="comments">Comentarios adicionales(Opcional):</label>
+      <textarea name="comments" id="comments" rows="4"></textarea>
+      <span id="error-comments" class="error-message"></span>
+
+      <!-- Acepto los riesgos de mision -->
+      <label
+        ><input type="checkbox" id="accepRisk" name="accepRisk" required
+      /></label>
+      <span id="error-acceptRisk" class="error-message"></span>
+
+      <button type="submit">Enviar Formulario</button>
+    </form>
+  </body>
+</html>
