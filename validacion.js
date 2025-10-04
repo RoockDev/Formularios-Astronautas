@@ -1,119 +1,130 @@
+/**Validacion Nombre Completo */
+const fullNameInput = document.getElementById("fullName");
+const errorFullName = document.getElementById("error-fullName");
+
 const validateFullName = () => {
-  let fullNameInput = document.getElementById("fullName");
-  let errorFullName = document.getElementById("error-fullName");
+  const value = fullNameInput.value.trim();
 
-  fullNameInput.addEventListener("input", () => {
-    const value = fullNameInput.value.trim(); //quitamos los espacios del inicio y del final
+  if (value.length === 0) {
+    fullNameInput.style.borderColor = "red";
+    fullNameInput.style.backgroundColor = "#ffcccc";
+    fullNameInput.style.color = "black";
+    errorFullName.textContent = "El campo de nombre no puede estar vacio";
+  } else if (value.length < 3) {
+    fullNameInput.style.borderColor = "red";
+    fullNameInput.style.backgroundColor = "#ffcccc";
+    fullNameInput.style.color = "black";
+    errorFullName.textContent =
+      "Este campo no puede tener menos de 3 caracteres";
+  } else {
+    fullNameInput.style.borderColor = "green";
+    fullNameInput.style.backgroundColor = "#333";
+    fullNameInput.style.color = "white";
 
-    if (value.length === 0) {
-      fullNameInput.style.borderColor = "red";
-      fullNameInput.style.backgroundColor = "#ffcccc";
-      fullNameInput.style.color = "black";
-      errorFullName.textContent = "El campo de nombre no puede estar vacio";
-    } else if (value.length < 3) {
-      fullNameInput.style.borderColor = "red";
-      fullNameInput.style.backgroundColor = "#ffcccc";
-      fullNameInput.style.color = "black";
-      errorFullName.textContent =
-        "Este campo no puede tener menos de 3 caracteres";
-    } else {
-      fullNameInput.style.borderColor = "green";
-      fullNameInput.style.backgroundColor = "#333";
-      fullNameInput.style.color = "white";
-
-      errorFullName.textContent = "";
-    }
-  });
+    errorFullName.textContent = "";
+  }
 };
 
+fullNameInput.addEventListener("input", validateFullName);
+fullNameInput.addEventListener("blur", validateFullName);
+
+/**Validacion Correo Electronico */
+
+const email = document.getElementById("email");
+const errorEmail = document.getElementById("error-email");
 const isValidEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
 };
 
 const validateEmail = () => {
-  let email = document.getElementById("email");
-  let errorEmail = document.getElementById("error-email");
+  const value = email.value.trim();
 
-  email.addEventListener("input", () => {
-    const value = email.value.trim();
-
-    if (value.length === 0) {
-      email.style.borderColor = "red";
-      email.style.backgroundColor = "#ffcccc";
-      email.style.color = "black";
-      errorEmail.textContent = "El campo email no puede estar vacio";
-    } else if (!isValidEmail(value)) {
-      email.style.borderColor = "red";
-      email.style.backgroundColor = "#ffcccc";
-      email.style.color = "black";
-      errorEmail.textContent = "El Correro no tiene un formato valido";
-    } else {
-      email.style.borderColor = "green";
-      email.style.backgroundColor = "#333";
-      email.style.color = "white";
-      errorEmail.textContent = "";
-    }
-  });
+  if (value.length === 0) {
+    email.style.borderColor = "red";
+    email.style.backgroundColor = "#ffcccc";
+    email.style.color = "black";
+    errorEmail.textContent = "El campo email no puede estar vacio";
+  } else if (!isValidEmail(value)) {
+    email.style.borderColor = "red";
+    email.style.backgroundColor = "#ffcccc";
+    email.style.color = "black";
+    errorEmail.textContent = "El Correro no tiene un formato valido";
+  } else {
+    email.style.borderColor = "green";
+    email.style.backgroundColor = "#333";
+    email.style.color = "white";
+    errorEmail.textContent = "";
+  }
 };
 
+email.addEventListener("input", validateEmail);
+email.addEventListener("blur", validateEmail);
+
+/**Validacion Contraseña */
+
+const password = document.getElementById("password");
+const errorPassword = document.getElementById("error-password");
 const isValidPassword = (password) => {
   const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}$/;
   return regex.test(password);
 };
 
 const validatePassword = () => {
-  let password = document.getElementById("password");
-  let errorPassword = document.getElementById("error-password");
-
-  password.addEventListener("input", () => {
-    const value = password.value.trim();
-    if (value.length === 0) {
-      password.style.borderColor = "red";
-      password.style.backgroundColor = "#ffcccc";
-      password.style.color = "black";
-      errorPassword.textContent = "El campo Password no puede estar vacio";
-    } else if (!isValidPassword(value)) {
-      password.style.borderColor = "red";
-      password.style.backgroundColor = "#ffcccc";
-      password.style.color = "black";
-      errorPassword.textContent =
-        "La contraseña debe contener al menos una mayúscula, un número,un símbolo especial y minimos 8 caracteres";
-    } else {
-      password.style.borderColor = "green";
-      password.style.backgroundColor = "#333";
-      errorPassword.textContent = "";
-    }
-  });
+  const value = password.value.trim();
+  if (value.length === 0) {
+    password.style.borderColor = "red";
+    password.style.backgroundColor = "#ffcccc";
+    password.style.color = "black";
+    errorPassword.textContent = "El campo Password no puede estar vacio";
+  } else if (!isValidPassword(value)) {
+    password.style.borderColor = "red";
+    password.style.backgroundColor = "#ffcccc";
+    password.style.color = "black";
+    errorPassword.textContent =
+      "La contraseña debe contener al menos una mayúscula, un número,un símbolo especial y minimos 8 caracteres";
+  } else {
+    password.style.borderColor = "green";
+    password.style.backgroundColor = "#333";
+    password.style.color = "white";
+    errorPassword.textContent = "";
+  }
 };
+
+password.addEventListener("input", validatePassword);
+password.addEventListener("blur", validatePassword);
+
+/**Validadcion edad */
+const ageInput = document.getElementById("age");
+const errorAge = document.getElementById("error-age");
+
 const validateAge = () => {
-  let ageInput = document.getElementById("age");
-  let errorAge = document.getElementById("error-age");
+  const value = ageInput.value;
 
-  ageInput.addEventListener("input", () => {
-    const value = ageInput.value;
+  if (value === "") {
+    ageInput.style.borderColor = "red";
+    ageInput.style.backgroundColor = "#ffcccc";
+    errorAge.textContent = "Edad no puede estar vacía";
+  } else {
+    const age = Number(value);
 
-    if (value === "") {
+    if (age < 25 || age > 50) {
       ageInput.style.borderColor = "red";
       ageInput.style.backgroundColor = "#ffcccc";
-      errorAge.textContent = "Edad no puede estar vacía";
+      ageInput.style.color = "black";
+      errorAge.textContent = "La edad debe ser entre 25 y 50";
     } else {
-      const age = Number(value);
-
-      if (age < 25 || age > 50) {
-        ageInput.style.borderColor = "red";
-        ageInput.style.backgroundColor = "#ffcccc";
-        ageInput.style.color = "black";
-        errorAge.textContent = "La edad debe ser entre 25 y 50";
-      } else {
-        ageInput.style.borderColor = "green";
-        ageInput.style.backgroundColor = "#333";
-        ageInput.style.color = "white";
-        errorAge.textContent = "";
-      }
+      ageInput.style.borderColor = "green";
+      ageInput.style.backgroundColor = "#333";
+      ageInput.style.color = "white";
+      errorAge.textContent = "";
     }
-  });
+  }
 };
+
+ageInput.addEventListener("input", validateAge);
+ageInput.addEventListener("blur", validateAge);
+/**Validacion Especialidad */
 
 const validateSpecialty = () => {
   const errorSpecialty = document.getElementById("error-specialty");
@@ -137,6 +148,8 @@ specialtyRadios.forEach((radio) => {
 const specialtyFieldset = document.getElementById("specialty-fieldset");
 specialtyFieldset.addEventListener("mouseleave", validateSpecialty);
 
+/**Validacion Planeta */
+
 const planetSelect = document.getElementById("planet");
 const errorPlanet = document.getElementById("error-planet");
 
@@ -158,6 +171,7 @@ const validatePlanet = () => {
 
 planetSelect.addEventListener("change", validatePlanet);
 planetSelect.addEventListener("blur", validatePlanet);
+/**Validacion Fecha de despegue */
 
 const departureDate = document.getElementById("departureDate");
 const errorDepartureDate = document.getElementById("error-departureDate");
@@ -191,6 +205,8 @@ const validateDepartureDate = () => {
 departureDate.addEventListener("input", validateDepartureDate);
 departureDate.addEventListener("blur", validateDepartureDate);
 
+/**Validacion nivel de condicion fisica */
+
 const fitnessLevel = document.getElementById("fitnessLevel");
 const errorFitnessLevel = document.getElementById("error-fitnessLevel");
 
@@ -216,6 +232,8 @@ const validateFitnessLEvel = () => {
 fitnessLevel.addEventListener("input", validateFitnessLEvel);
 fitnessLevel.addEventListener("blur", validateFitnessLEvel);
 
+/**Validadcion historial medico */
+
 const medicalFile = document.getElementById("medicalFile");
 const errorMedicalFile = document.getElementById("error-medicalFile");
 
@@ -223,7 +241,7 @@ const validateMedicalFile = () => {
   const file = medicalFile.files[0]; //con esto seleccionamos el primer archivo(si hay claro)
 
   if (!file) {
-    medicalFile.borderColor = "red";
+    medicalFile.style.borderColor = "red";
     medicalFile.backgroundColor = "#ffcccc";
     errorMedicalFile.textContent = "Archivo de historial medico obligatorio";
   } else {
@@ -242,6 +260,8 @@ const validateMedicalFile = () => {
 
 medicalFile.addEventListener("change", validateMedicalFile);
 
+/**Validacion comentarios */
+
 const comments = document.getElementById("comments");
 const errorComments = document.getElementById("error-comments");
 
@@ -249,7 +269,7 @@ const validateComments = () => {
   const value = comments.value;
   if (value === "") {
     comments.style.borderColor = "";
-    comments.style.backgroundColor = ""
+    comments.style.backgroundColor = "";
     errorComments.textContent = "";
   } else if (value.length < 10) {
     comments.style.borderColor = "red";
@@ -265,25 +285,19 @@ const validateComments = () => {
 };
 
 comments.addEventListener("input", validateComments);
+/**Validacion riesgos de mision */
 
-const acceptRisk = document.getElementById('acceptRisk');
-const errorAcceptRisk = document.getElementById('error-acceptRisk');
+const acceptRisk = document.getElementById("acceptRisk");
+const errorAcceptRisk = document.getElementById("error-acceptRisk");
 
-const validateAcceptRisk = () =>{
+const validateAcceptRisk = () => {
   if (!acceptRisk.checked) {
     errorAcceptRisk.textContent = "Debe aceptar los riesgos de misión";
-    errorAcceptRisk.style.color = 'red';
-  }else{
-     errorAcceptRisk.textContent = "Riesgos de misión aceptados";
-    errorAcceptRisk.style.color = 'green';
-
+    errorAcceptRisk.style.color = "red";
+  } else {
+    errorAcceptRisk.textContent = "Riesgos de misión aceptados";
+    errorAcceptRisk.style.color = "green";
   }
-}
+};
 
-acceptRisk.addEventListener('change', validateAcceptRisk);
-
-
-validateFullName();
-validateEmail();
-validatePassword();
-validateAge();
+acceptRisk.addEventListener("change", validateAcceptRisk);
