@@ -221,6 +221,35 @@ const validateFitnessLEvel = () =>{
 fitnessLevel.addEventListener('input',validateFitnessLEvel);
 fitnessLevel.addEventListener('blur',validateFitnessLEvel);
 
+const medicalFile = document.getElementById('medicalFile');
+const errorMedicalFile = document.getElementById('error-medicalFile');
+
+const validateMedicalFile = () =>{
+  const file = medicalFile.files[0]; //con esto seleccionamos el primer archivo(si hay claro)
+  
+
+  if (!file) {
+    medicalFile.borderColor = 'red';
+    medicalFile.backgroundColor = '#ffcccc';
+    errorMedicalFile.textContent = 'Archivo de historial medico obligatorio';
+  } else{
+    const fileName = file.name;
+    if (!fileName.endsWith('.pdf')) {
+       medicalFile.style.borderColor = 'red';
+      medicalFile.style.backgroundColor = '#ffcccc';
+      errorMedicalFile.textContent = 'El archivo debe ser PDF';
+    } else {
+      medicalFile.style.borderColor = 'green';
+      medicalFile.style.backgroundColor = '#333';
+      errorMedicalFile.textContent = '';
+    }
+  }
+}
+
+medicalFile.addEventListener('change', validateMedicalFile);
+
+
+
 
 validateFullName();
 validateEmail();
