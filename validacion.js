@@ -161,6 +161,40 @@ const validatePlanet = () => {
 planetSelect.addEventListener('change',validatePlanet);
 planetSelect.addEventListener('blur',validatePlanet);
 
+const departureDate = document.getElementById('departureDate');
+const errorDepartureDate = document.getElementById('error-departureDate');
+
+const validateDepartureDate = () => {
+  const value = departureDate.value;
+
+  if (value === "") {
+    departureDate.style.borderColor = 'red';
+    departureDate.style.backgroundColor =  '#ffcccc';
+    departureDate.style.color = 'black';
+    errorDepartureDate.textContent = 'Fecha de disponibilidad obligatoria'
+  }else{
+    const selectDate = new Date(value);
+    const today = new Date();
+
+    if (selectDate < today) {
+      departureDate.style.borderColor = 'red';
+      departureDate.style.backgroundColor =  '#ffcccc';
+      departureDate.style.color = 'black';
+      errorDepartureDate.textContent = 'La fecha debe ser futura';
+
+    }else{
+       departureDate.style.borderColor = 'green';
+      departureDate.style.backgroundColor = '#333';
+      departureDate.style.color = 'white';
+      errorDepartureDate.textContent = '';
+    }
+  }
+}
+
+departureDate.addEventListener('input',validateDepartureDate);
+departureDate.addEventListener('blur',validateDepartureDate);
+
+
 validateFullName();
 validateEmail();
 validatePassword();
