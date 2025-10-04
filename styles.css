@@ -77,4 +77,14 @@
       border-radius: 5px;
       font-weight: bold;
     }
+
+    #missionRisks{
+      color: white;
+      padding: 10px;
+    }
+
+    
   
+    #submitForm{
+      margin-top: 15px;
+    }
