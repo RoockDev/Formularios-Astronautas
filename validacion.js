@@ -139,6 +139,28 @@ specialtyRadios.forEach(radio => {
 const specialtyFieldset = document.getElementById('specialty-fieldset');
 specialtyFieldset.addEventListener('mouseleave', validateSpecialty);
 
+const planetSelect = document.getElementById('planet');
+const errorPlanet = document.getElementById('error-planet');
+
+const validatePlanet = () => {
+  const value = planetSelect.value;
+
+  if (value === "") {
+    planetSelect.style.borderColor = 'red';
+    planetSelect.style.backgroundColor = '#ffcccc';
+    planetSelect.style.color = 'black';
+    errorPlanet.textContent = 'Selecciona tu planeta de origen';
+  }else{
+    planetSelect.style.borderColor = 'green';
+    planetSelect.style.backgroundColor = '#333';
+    planetSelect.style.color = 'white';
+    errorPlanet.textContent = '';
+  }
+}
+
+planetSelect.addEventListener('change',validatePlanet);
+planetSelect.addEventListener('blur',validatePlanet);
+
 validateFullName();
 validateEmail();
 validatePassword();
