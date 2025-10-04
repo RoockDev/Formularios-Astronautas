@@ -194,6 +194,33 @@ const validateDepartureDate = () => {
 departureDate.addEventListener('input',validateDepartureDate);
 departureDate.addEventListener('blur',validateDepartureDate);
 
+const fitnessLevel = document.getElementById('fitnessLevel');
+const errorFitnessLevel = document.getElementById('error-fitnessLevel');
+
+const validateFitnessLEvel = () =>{
+  const value = fitnessLevel.value;
+
+  if (value === "1") {
+      errorFitnessLevel.textContent = 'Nivel de condicion fisica obligatorio';
+      errorFitnessLevel.style.color = 'red';
+  }else{
+    const level = Number(value);
+    if (level < 7) {
+      
+      errorFitnessLevel.textContent = 'La condicion fisica no puede estar por debajo de 7';
+      errorFitnessLevel.style.color = 'red';
+    }else{
+
+      errorFitnessLevel.textContent = "Nivel de condicion fisica correcta";
+      errorFitnessLevel.style.color = 'green';
+
+    }
+  }
+}
+
+fitnessLevel.addEventListener('input',validateFitnessLEvel);
+fitnessLevel.addEventListener('blur',validateFitnessLEvel);
+
 
 validateFullName();
 validateEmail();
