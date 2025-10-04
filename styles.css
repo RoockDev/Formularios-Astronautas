@@ -80,9 +80,16 @@
 
     #missionRisks{
       color: white;
-      padding: 10px;
+      padding: 5px;
+      margin-bottom: 10px;
+      
     }
 
+    #acceptRisk{
+      
+      cursor: pointer;
+      width: 20px;
+    }
     
   
     #submitForm{
