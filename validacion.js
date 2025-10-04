@@ -85,9 +85,36 @@ const validatePassword = () =>{
     }
   });
 }
+const validateAge = () => {
+  let ageInput = document.getElementById('age');
+  let errorAge = document.getElementById('error-age');
 
+  ageInput.addEventListener('input', () => {
+    const value = ageInput.value; 
 
+    if (value === "") {
+      ageInput.style.borderColor = 'red';
+      ageInput.style.backgroundColor = '#ffcccc';
+      errorAge.textContent = 'Edad no puede estar vacía';
+    } else {
+      const age = Number(value); 
+
+      if (age < 25 || age > 50) {
+        ageInput.style.borderColor = 'red';
+        ageInput.style.backgroundColor = '#ffcccc';
+        ageInput.style.color = 'black'
+        errorAge.textContent = 'La edad debe ser entre 25 y 50';
+      } else {
+        ageInput.style.borderColor = 'green';
+        ageInput.style.backgroundColor = '#333';
+        ageInput.style.color = 'white'
+        errorAge.textContent = '';
+      }
+    }
+  });
+};
 
 validateFullName();
 validateEmail();
 validatePassword();
+validateAge();
