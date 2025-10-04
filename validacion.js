@@ -266,6 +266,22 @@ const validateComments = () => {
 
 comments.addEventListener("input", validateComments);
 
+const acceptRisk = document.getElementById('acceptRisk');
+const errorAcceptRisk = document.getElementById('error-acceptRisk');
+
+const validateAcceptRisk = () =>{
+  if (!acceptRisk.checked) {
+    errorAcceptRisk.textContent = "Debe aceptar los riesgos de misión";
+    errorAcceptRisk.style.color = 'red';
+  }else{
+     errorAcceptRisk.textContent = "Riesgos de misión aceptados";
+    errorAcceptRisk.style.color = 'green';
+
+  }
+}
+
+acceptRisk.addEventListener('change', validateAcceptRisk);
+
 
 validateFullName();
 validateEmail();
