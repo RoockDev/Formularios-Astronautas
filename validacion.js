@@ -114,6 +114,31 @@ const validateAge = () => {
   });
 };
 
+
+  const validateSpecialty = () =>{
+ 
+  const errorSpecialty = document.getElementById('error-specialty');
+
+  const selected = document.querySelector('input[name="specialty"]:checked');
+  if (!selected) {
+    specialtyFieldset.style.borderColor = 'red';
+    errorSpecialty.textContent = 'Debes seleccionar una especialidad';
+  }else{
+    specialtyFieldset.style.borderColor = 'green';
+    specialtyFieldset.style.background = '#333';
+    errorSpecialty.textContent = '';
+  }
+  
+};
+
+ const specialtyRadios = document.querySelectorAll('input[name="specialty"]');
+specialtyRadios.forEach(radio => {
+  radio.addEventListener('change',validateSpecialty);
+});
+
+const specialtyFieldset = document.getElementById('specialty-fieldset');
+specialtyFieldset.addEventListener('mouseleave', validateSpecialty);
+
 validateFullName();
 validateEmail();
 validatePassword();
