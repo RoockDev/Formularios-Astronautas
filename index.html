@@ -12,17 +12,17 @@
     <form id="astronautForm">
       <!-- nombre completo -->
       <label for="fullName">Nombre completo:</label>
-      <input type="text" id="fullName" name="fullName" required />
+      <input type="text" id="fullName" name="fullName"  />
       <span id="error-fullName" class="error-message"></span>
 
       <!-- correo de contacto -->
       <label for="email">Correo de contacto: </label>
-      <input type="email" id="email" name="email" required />
+      <input type="email" id="email" name="email"  />
       <span id="error-email" class="error-message"></span>
 
       <!-- Codigo de Seguridad -->
       <label for="password">Codigo de seguridad:</label>
-      <input type="password" id="password" name="password" required />
+      <input type="password" id="password" name="password"  />
       <span id="error-password" class="error-message"></span>
 
       <!-- Edad -->
@@ -34,19 +34,19 @@
       <fieldset id="specialty-fieldset">
         <legend>Especialidad:</legend>
         <label
-          ><input type="radio" name="specialty" value="Piloto" required />
+          ><input type="radio" name="specialty" value="Piloto"  />
           Piloto</label
         >
         <label
-          ><input type="radio" name="specialty" value="Ingeniero" required />
+          ><input type="radio" name="specialty" value="Ingeniero"  />
           Ingeniero</label
         >
         <label
-          ><input type="radio" name="specialty" value="Médico" required />
+          ><input type="radio" name="specialty" value="Médico"  />
           Médico</label
         >
         <label
-          ><input type="radio" name="specialty" value="Científico" required />
+          ><input type="radio" name="specialty" value="Científico" />
           Científico</label
         >
       </fieldset>
@@ -54,7 +54,7 @@
 
       <!-- Planeta de origen -->
       <label for="planet">Planeta de origen: </label>
-      <select name="planet" id="planet" required>
+      <select name="planet" id="planet" >
         <option value="">Selecciona un planeta</option>
         <option value="Tierra">Tierra</option>
         <option value="Marte">Marte</option>
@@ -64,7 +64,7 @@
 
       <!-- Fecha de disponibilidad -->
       <label for="departureDate">Fecha de disponibilidad</label>
-      <input type="date" id="departureDate" name="departureDate" required />
+      <input type="date" id="departureDate" name="departureDate"  />
       <span id="error-departureDate" class="error-message"></span>
 
       <!-- Nivel de condicion fisica -->
@@ -85,7 +85,7 @@
         id="medicalFile"
         name="medicalFile"
         accept=".pdf"
-        required
+        
       />
       <span id="error-medicalFile" class="error-message"></span>
 
@@ -96,11 +96,12 @@
 
       <!-- Acepto los riesgos de mision -->
       <label  id="missionRisks" >Acepto los riesgos de misión </label>
-      <input type="checkbox" id="acceptRisk" name="acceptRisk" required />
+      <input type="checkbox" id="acceptRisk" name="acceptRisk"  />
       
       <span id="error-acceptRisk" class="error-message"></span>
 
       <button  id="submitForm" type="submit">Enviar Formulario</button>
+      <div id="resultMessage"></div>
     </form>
     <script src="validacion.js"></script>
   </body>
