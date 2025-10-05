@@ -104,6 +104,7 @@ const validateAge = () => {
   if (value === "") {
     ageInput.style.borderColor = "red";
     ageInput.style.backgroundColor = "#ffcccc";
+    ageInput.style.color = "black";
     errorAge.textContent = "Edad no puede estar vacía";
   } else {
     const age = Number(value);
@@ -210,7 +211,7 @@ departureDate.addEventListener("blur", validateDepartureDate);
 const fitnessLevel = document.getElementById("fitnessLevel");
 const errorFitnessLevel = document.getElementById("error-fitnessLevel");
 
-const validateFitnessLEvel = () => {
+const validateFitnessLevel = () => {
   const value = fitnessLevel.value;
 
   if (value === "1") {
@@ -223,14 +224,14 @@ const validateFitnessLEvel = () => {
         "La condicion fisica no puede estar por debajo de 7";
       errorFitnessLevel.style.color = "red";
     } else {
-      errorFitnessLevel.textContent = "Nivel de condicion fisica correcta";
-      errorFitnessLevel.style.color = "green";
+      errorFitnessLevel.textContent = "";
+      errorFitnessLevel.style.color = "";
     }
   }
 };
 
-fitnessLevel.addEventListener("input", validateFitnessLEvel);
-fitnessLevel.addEventListener("blur", validateFitnessLEvel);
+fitnessLevel.addEventListener("input", validateFitnessLevel);
+fitnessLevel.addEventListener("blur", validateFitnessLevel);
 
 /**Validadcion historial medico */
 
@@ -276,7 +277,7 @@ const validateComments = () => {
     comments.style.backgroundColor = "#ffcccc";
     comments.style.color = "black";
     errorComments.textContent = "Debe añadir al menos 10 caracteres";
-  } else if (value.length > 10) {
+  } else {
     comments.style.borderColor = "green";
     comments.style.backgroundColor = "#333";
     comments.style.color = "white";
@@ -295,9 +296,55 @@ const validateAcceptRisk = () => {
     errorAcceptRisk.textContent = "Debe aceptar los riesgos de misión";
     errorAcceptRisk.style.color = "red";
   } else {
-    errorAcceptRisk.textContent = "Riesgos de misión aceptados";
-    errorAcceptRisk.style.color = "green";
+    errorAcceptRisk.textContent = "";
+    errorAcceptRisk.style.color = "";
   }
 };
 
 acceptRisk.addEventListener("change", validateAcceptRisk);
+
+/**Validacion todo es correcto */
+
+const form = document.getElementById('astronautForm');
+const resultMessage = document.getElementById('resultMessage');
+
+const validateAll = () => {
+  // Validamos todos los campos uno por uno
+  validateFullName();
+  validateEmail();
+  validatePassword();
+  validateAge();
+  validateSpecialty();
+  validatePlanet();
+  validateDepartureDate();
+  validateFitnessLevel();
+  validateMedicalFile();
+  validateComments();
+  validateAcceptRisk();
+
+  // Verificamos si hay algún mensaje de error visible
+  const errorMessages = document.querySelectorAll('.error-message');
+  let errors = false;
+  
+  errorMessages.forEach(error => {
+    if (error.textContent.trim() !== '') {
+      errors = true;
+    }
+  });
+
+  if (errors) {
+    resultMessage.textContent = 'Corrige los errores antes de enviar';
+    resultMessage.style.color = 'red';
+    
+  } else {
+    resultMessage.textContent = 'Todo ha sido correcto, nos vemos en Marte';
+    resultMessage.style.color = 'green';
+    
+  }
+};
+
+form.addEventListener('submit', (e) => {
+if (!validateAll()) {
+  e.preventDefault(); // se detiene el envio si hay errores
+}
+});
