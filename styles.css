@@ -77,4 +77,21 @@
       border-radius: 5px;
       font-weight: bold;
     }
+
+    #missionRisks{
+      color: white;
+      padding: 5px;
+      margin-bottom: 10px;
+      
+    }
+
+    #acceptRisk{
+      
+      cursor: pointer;
+      width: 20px;
+    }
+    
   
+    #submitForm{
+      margin-top: 15px;
+    }
