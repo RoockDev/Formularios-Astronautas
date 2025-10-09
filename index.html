@@ -9,32 +9,33 @@
   <body>
     <h1>Formulario de Postulación - Misión Marte 2030</h1>
 
-    <form id="astronautForm">
+    <form id="astronautForm" novalidate> 
       <!-- nombre completo -->
       <label for="fullName">Nombre completo:</label>
-      <input type="text" id="fullName" name="fullName"  />
+      <input type="text" id="fullName" name="fullName" required minlength="3"  />
       <span id="error-fullName" class="error-message"></span>
 
       <!-- correo de contacto -->
       <label for="email">Correo de contacto: </label>
-      <input type="email" id="email" name="email"  />
+      <input type="email" id="email" name="email"  required />
       <span id="error-email" class="error-message"></span>
 
       <!-- Codigo de Seguridad -->
       <label for="password">Codigo de seguridad:</label>
-      <input type="password" id="password" name="password"  />
+      <input type="password" id="password" name="password" required minlength="8"
+                pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}$" />
       <span id="error-password" class="error-message"></span>
 
       <!-- Edad -->
       <label for="age">Edad:</label>
-      <input type="number" id="age" name="age" />
+      <input type="number" id="age" name="age" required min="25" max="50" />
       <span id="error-age" class="error-message"></span>
 
       <!-- Especialidad(radio) -->
       <fieldset id="specialty-fieldset">
         <legend>Especialidad:</legend>
         <label
-          ><input type="radio" name="specialty" value="Piloto"  />
+          ><input type="radio" name="specialty" value="Piloto" required />
           Piloto</label
         >
         <label
@@ -54,7 +55,7 @@
 
       <!-- Planeta de origen -->
       <label for="planet">Planeta de origen: </label>
-      <select name="planet" id="planet" >
+      <select name="planet" id="planet" required >
         <option value="">Selecciona un planeta</option>
         <option value="Tierra">Tierra</option>
         <option value="Marte">Marte</option>
@@ -64,7 +65,7 @@
 
       <!-- Fecha de disponibilidad -->
       <label for="departureDate">Fecha de disponibilidad</label>
-      <input type="date" id="departureDate" name="departureDate"  />
+      <input type="date" id="departureDate" name="departureDate" required />
       <span id="error-departureDate" class="error-message"></span>
 
       <!-- Nivel de condicion fisica -->
@@ -75,6 +76,8 @@
         name="fitnessLevel"
         min="1"
         max="10"
+        step="1"
+        required
       />
       <span id="error-fitnessLevel" class="error-message"></span>
 
@@ -85,24 +88,25 @@
         id="medicalFile"
         name="medicalFile"
         accept=".pdf"
+        required
         
       />
       <span id="error-medicalFile" class="error-message"></span>
 
       <!-- Comentarios adicionales -->
       <label for="comments">Comentarios adicionales(Opcional):</label>
-      <textarea name="comments" id="comments" rows="4"></textarea>
+      <textarea name="comments" id="comments" rows="4" minlength="10"></textarea>
       <span id="error-comments" class="error-message"></span>
 
       <!-- Acepto los riesgos de mision -->
       <label  id="missionRisks" >Acepto los riesgos de misión </label>
-      <input type="checkbox" id="acceptRisk" name="acceptRisk"  />
+      <input type="checkbox" id="acceptRisk" name="acceptRisk" required />
       
       <span id="error-acceptRisk" class="error-message"></span>
 
       <button  id="submitForm" type="submit">Enviar Formulario</button>
       <div id="resultMessage"></div>
     </form>
-    <script src="validacion.js"></script>
+    <script src="validacion-api.js"></script>
   </body>
 </html>
